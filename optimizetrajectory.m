@@ -15,18 +15,12 @@ function  [command, optimum, predicted_trajectory] = ...
     %initial conditions
     if isempty(optimum)
         optimum = zeros(8*H,1);
-        
-       % u1_optimum = zeros(H,1);
-        %u2_optimum = zeros(H,1);
-        %command = [u1_optimum(1), u2_optimum(1)];
     end
 
    % options = optimoptions(@fmincon,'Algorithm','sqp','MaxIterations',5000)
 
     
-   [optimum, ~] = fmincon(@(y)costfunction(y, H), optimum);
-   %[],[],[],[],[],[],...
-    %   @(y)discretization(y,x_init,z_init,theta_init,xvelocity_init,zvelocity_init,angvelocity_init,current_state,command));
+   [optimum, ~] = fmincon(@(y)costfunction(y, H), optimum,[],[],[],[],[],[],@(y)discretization(y,x_init,z_init,theta_init,xvelocity_init,zvelocity_init,angvelocity_init,optimum(1),optimum(2)));
    
    u1_optimum = optimum(id_u1);
    u2_optimum = optimum(id_u2);

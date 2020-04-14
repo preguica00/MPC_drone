@@ -1,4 +1,4 @@
-function dxdt = quadcopter_ode(y,u)
+function dydt = quadcopter_ode(t,y,u)
 
 [H,Ts,id_u1, id_u2,id_x,id_z,id_theta,id_dotx,id_dotz,id_dottheta] = drone_info;
 [mass,inertia_moment,arm_moment,gravitational_acceleration] = parameters;
@@ -22,8 +22,12 @@ z_acceleration = gravitational_acceleration -(1/mass)*cos(pitch)* common_mode;
 pitch_acceleration = (arm_moment/inertia_moment)*diff_mode;
 
 %% 
-dxdt(1)= x_acceleration;
-dxdt(2)= z_acceleration;
-dxdt(3)= pitch_acceleration;
-    
+%dydt(1)= velocity_x;
+%dydt(2)= velocity_z;
+%dydt(3) = velocity_pitch;
+%dydt(4) = x_acceleration;
+%dydt(5) = z_acceleration;
+%dydt(6)= pitch_acceleration;
+
+dydt=[velocity_x;velocity_z;velocity_pitch;x_acceleration;z_acceleration;pitch_acceleration];
 end

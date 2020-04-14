@@ -4,8 +4,8 @@ function cost = costfunction(y, H)
     x_final=60;
     z_final=60;
     theta_final=0;
-    dotx_final=60;
-    dotz_final=60;
+    dotx_final=0;
+    dotz_final=0;
     dottheta_final=0;
     
     [H, Ts, id_u1, id_u2,id_x,id_z,id_theta,id_dotx,id_dotz,id_dottheta] = drone_info;
