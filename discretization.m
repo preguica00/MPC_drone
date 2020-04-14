@@ -27,17 +27,21 @@ mode_common = [u2_init; y(id_u2)];
 % Run discrete prediction
 ceq = [];
 for i = 1:H
-%     ceq(end+1) = x(i+1) - (x(i) + Ts*x_velocity(i));
-%     ceq(end+1) = z(i+1) - (z(i) + Ts*z_velocity(i));
-%     ceq(end+1) = theta(i+1) - (theta(i) + Ts*angular_velocity(i));
-%     ceq(end+1) = x_velocity(i+1) - (x_velocity(i) + (Ts/mass)*sin(theta(i))*mode_common(i));
-%     ceq(end+1) = (z_velocity(i) + Ts(gravitational_acceleration-(1/mass)*cos(theta(i))*mode_common(i)));
-%     ceq(end+1) = angular_velocity(i+1) - (angular_velocity(i) + Ts*(arm_moment/inertia_moment)*mode_diff(i));
-    ceq(end+1) = y(i+1) - (simulate_timestep(current_state, [u1(k);u2(k)]);
+    ceq(end+1) = x(i+1) - (x(i) + Ts*x_velocity(i));
+    ceq(end+1) = z(i+1) - (z(i) + Ts*z_velocity(i));
+    ceq(end+1) = theta(i+1) - (theta(i) + Ts*angular_velocity(i));
+    ceq(end+1) = x_velocity(i+1) - (x_velocity(i) + (Ts/mass)*sin(theta(i))*mode_common(i));
+    ceq(end+1) = z_velocity(i+1) -(z_velocity(i)+ Ts*(gravitational_acceleration-((1/mass)*cos(theta(i))*mode_common(i))));
+    ceq(end+1) = angular_velocity(i+1) - (angular_velocity(i) + Ts*(arm_moment/inertia_moment)*mode_diff(i));
+%     ceq(end+1) = y(i+1) - (simulate_timestep(current_state, [u1(k);u2(k)]);
+% for i = 1:H
+%     ceq(end+1) = x1(i+1) - (x1(i) + Ts*v(i)*cos(theta(i)));
+%     ceq(end+1) = x2(i+1) - (x2(i) + Ts*v(i)*sin(theta(i)));
+% end
 
 end
 % x1 = y(id_x1);
 % x2 = y(id_x2);
 % c = sum(radius) - vecnorm([x1';x2']-obj_coord);
-     
+c=[];     
 end
