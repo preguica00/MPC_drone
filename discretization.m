@@ -2,7 +2,7 @@ function [c, ceq] = discretization(y,x_init,z_init,theta_init,xvelocity_init,zve
 
 [H,Ts,id_u1, id_u2,id_x,id_z,id_theta,id_dotx,id_dotz,id_dottheta] = drone_info;
 [mass,inertia_moment,arm_moment,gravitational_acceleration] = parameters;
-%[xobs,yobs,obj_coord, radius] = obstacle;
+[xobs,yobs,obj_coord, radius] = obstacle;
 
 % Unpacking
 x = y(id_x);
@@ -30,6 +30,7 @@ for i = 1:H
     ceq(end+1) = x(i+1) - (x(i) + Ts*x_velocity(i));
     ceq(end+1) = z(i+1) - (z(i) + Ts*z_velocity(i));
     ceq(end+1) = theta(i+1) - (theta(i) + Ts*angular_velocity(i));
+    
     ceq(end+1) = x_velocity(i+1) - (x_velocity(i) + (Ts/mass)*sin(theta(i))*mode_common(i));
     ceq(end+1) = z_velocity(i+1) -(z_velocity(i)+ Ts*(gravitational_acceleration-((1/mass)*cos(theta(i))*mode_common(i))));
     ceq(end+1) = angular_velocity(i+1) - (angular_velocity(i) + Ts*(arm_moment/inertia_moment)*mode_diff(i));
@@ -40,8 +41,8 @@ for i = 1:H
 % end
 
 end
-% x1 = y(id_x1);
-% x2 = y(id_x2);
-% c = sum(radius) - vecnorm([x1';x2']-obj_coord);
-c=[];     
+% x = y(id_x);
+% z = y(id_z);
+% c = sum(radius) - vecnorm([x';z']-obj_coord);
+c=[];
 end

@@ -13,8 +13,8 @@ function simulate()
     current_MPC_solution = [];
     
     [H,Ts,id_u1, id_u2,id_x,id_z,id_theta,id_dotx,id_dotz,id_dottheta] = drone_info;
-%[xobs,yobs, obj_coord,radius] = obstacle;
-     %   plot(xobs,yobs, '-k','Linewidth', 1.5);
+    [xobs,yobs, obj_coord,radius] = obstacle;
+%     plot(xobs,yobs, '-k','Linewidth', 1.5);
 
     for k = 1:50
         

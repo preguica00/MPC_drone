@@ -3,7 +3,7 @@ function cost = costfunction(y, H)
     %final positions
     x_final=60;
     z_final=60;
-    theta_final=5;
+    theta_final=45;
     dotx_final=0;
     dotz_final=0;
     dottheta_final=0;
@@ -22,6 +22,6 @@ function cost = costfunction(y, H)
     angular_velocity = y(id_dottheta);
    
     
-    cost = sum((x(:)-x_final).^2+(z(:)-z_final).^2 + (theta(:)-theta_final).^2 + (x_velocity(:)-dotx_final).^2+ (z_velocity(:)-dotz_final).^2+(angular_velocity(:)-dottheta_final).^2 + (mode_diff(:)).^2+(mode_common(:)).^2);   
+    cost = sum(8*(x(:)-x_final).^2+(z(:)-z_final).^2 + 2*(theta(:)-theta_final).^2 + (x_velocity(:)-dotx_final).^2+ (z_velocity(:)-dotz_final).^2+(angular_velocity(:)-dottheta_final).^2 + (mode_diff(:)).^2+(mode_common(:)).^2);   
 
 end
