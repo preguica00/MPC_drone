@@ -14,18 +14,12 @@ angular_velocity = y(id_dottheta);
 mode_diff = y(id_u1);
 mode_common = y(id_u2);
 
-
-x = [x_init; y(id_x)];
-z = [z_init; y(id_z)];
-theta = [theta_init; y(id_theta)];
-x_velocity = [xvelocity_init; y(id_dotx)];
-z_velocity = [zvelocity_init; y(id_dotz)];
-angular_velocity = [angvelocity_init; y(id_dottheta)];
-% 
 current_state=[x_init; z_init;theta_init;xvelocity_init; zvelocity_init;angvelocity_init];
 state =[current_state, [x,z,theta,x_velocity,z_velocity,angular_velocity]'];
 
 control=[mode_diff,mode_common];
+a= size(state)
+b=size(control)
 % Run discrete prediction
 ceq = [];
 for i = 1:H

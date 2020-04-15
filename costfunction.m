@@ -3,7 +3,7 @@ function cost = costfunction(y, H)
     %final positions
     x_final=60;
     z_final=60;
-    theta_final=90;
+    theta_final=45;
     dotx_final=0;
     dotz_final=0;
     dottheta_final=0;

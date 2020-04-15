@@ -30,7 +30,6 @@ function simulate()
         plot_prediction.YData = predicted_trajectory(:,2);
         plot_trajectory.XData(end+1) = current_state(1);
         plot_trajectory.YData(end+1) = current_state(2);
-        
         drawnow
         pause(0.05)
     end
