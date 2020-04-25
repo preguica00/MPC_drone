@@ -42,5 +42,5 @@ z = y(id_z);
 obs = size(sum(radius) - vecnorm([x';z']))
 theta = size((abs(theta)-20)')
 %c = [sum(radius) - vecnorm([x';z']-obj_coord);(abs(theta)-20)'];
-c=[];
+% c=[];
 end

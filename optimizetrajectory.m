@@ -1,4 +1,4 @@
-function  [command, optimum, predicted_trajectory] = ...
+  function  [command, optimum, predicted_trajectory] = ...
     optimizetrajectory(current_state, optimum)
 
 
@@ -18,9 +18,10 @@ function  [command, optimum, predicted_trajectory] = ...
     end
 
    % options = optimoptions(@fmincon,'Algorithm','sqp','MaxIterations',5000)
+opts = optimset('Display','iter','Algorithm','interior-point', 'MaxIter', 10000, 'MaxFunEvals', 10000);
 
     
-   [optimum, ~] = fmincon(@(y)costfunction(y, H), optimum,[],[],[],[],[],[],@(y)discretization(y,x_init,z_init,theta_init,xvelocity_init,zvelocity_init,angvelocity_init));
+   [optimum, ~] = fmincon(@(y)costfunction(y, H), optimum,[],[],[],[],[],[],@(y)discretization(y,x_init,z_init,theta_init,xvelocity_init,zvelocity_init,angvelocity_init),opts);
    
    u1_optimum = optimum(id_u1);
    u2_optimum = optimum(id_u2);

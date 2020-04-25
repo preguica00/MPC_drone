@@ -5,7 +5,11 @@ function simulate()
     hold on
     plot_prediction = plot(0,0,'or-', 'Linewidth', 1.5);
     plot_trajectory = plot(0,0,'db-','Linewidth', 1.5);
-    axis equal
+    plot_uav_body = plot(0,0,'Color',[1 0.6 0],'LineWidth',3);
+    state_trajectory=[];
+    control_variables=[];
+    
+    axis square
     xlim([0 60])
     ylim([0 60])
     
@@ -30,8 +34,15 @@ function simulate()
         plot_prediction.YData = predicted_trajectory(:,2);
         plot_trajectory.XData(end+1) = current_state(1);
         plot_trajectory.YData(end+1) = current_state(2);
+        plot_uav_body.XData = [0 -sin(current_state(3))]*4 + current_state(1);
+        plot_uav_body.YData = [0 cos(current_state(3))]*4+ current_state(2);
+        state_trajectory(end+1,:) = current_state;
+        control_variables(end+1,:) = command;
+        
         drawnow
         pause(0.05)
     end
+    save('states.mat','state_trajectory')
+    save('control.mat','control_variables')
 
 end

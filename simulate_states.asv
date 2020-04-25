@@ -1,0 +1,42 @@
+load ('states.mat')
+load ('control.mat')
+
+
+
+%     x = y(id_x);
+%     z = y(id_z);
+%     theta = y(id_theta);
+%     x_velocity = y(id_dotx);
+%     z_velocity = y(id_dotz);
+%     angular_velocity = y(id_dottheta);
+    
+figure
+subplot(2,2,1)
+plot(state_trajectory(:,1), 'b', 'Linewidth', 1.5);
+xlabel('x')
+ylabel('Amplitude')
+
+subplot(2,2,2)
+plot(state_trajectory(:,2),'b', 'Linewidth', 1.5);
+xlabel('z')
+ylabel('Amplitude')
+
+subplot(2,2,3)
+plot(state_trajectory(:,3),'b', 'Linewidth', 1.5);
+xlabel('$\theta$')
+ylabel('Amplitude')
+
+subplot(2,2,4)
+plot(state_trajectory(:,4),'b', 'Linewidth', 1.5);
+xlabel('$\dot{x}$')
+ylabel('Amplitude')
+
+% subplot(2,2,5)
+% plot(state_trajectory(:,5),'b', 'Linewidth', 1.5);
+% xlabel('$\dot{z}$')
+% ylabel('Amplitude')
+% 
+% subplot(2,3,3)
+% plot(state_trajectory(:,6),'b', 'Linewidth', 1.5);
+% xlabel('$\dot{\theta}$')
+% ylabel('Amplitude')
