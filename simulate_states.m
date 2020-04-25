@@ -36,16 +36,16 @@ xlabel('$\dot{z}$', 'Interpreter','latex')
 ylabel('Amplitude')
 
 subplot(3,2,6)
-plot(current_MPC_solution(:,6),'b', 'Linewidth', 1.5);
+plot(state_trajectory(:,6),'b', 'Linewidth', 1.5);
 xlabel('$\dot{\theta}$', 'Interpreter','latex')
 ylabel('Amplitude')
 
-Figure
+figure
 subplot(1,2,1)
-plot(state_trajectory(:,5),'b', 'Linewidth', 1.5);
+plot(control_variables(:,1),'b', 'Linewidth', 1.5);
 xlabel('$\dot{z}$', 'Interpreter','latex')
 ylabel('Amplitude')
 subplot(1,2,2)
-plot(state_trajectory(:,5),'b', 'Linewidth', 1.5);
+plot(control_variables(:,2),'b', 'Linewidth', 1.5);
 xlabel('u_2')
 ylabel('Amplitude')
